@@ -1,4 +1,5 @@
-﻿using System;                                
+﻿using System;                              
+
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -135,7 +136,7 @@ namespace BOTAbritradorPorPlazoIOL
             //AddTicker("97866", "TX23");
             //AddTicker("97867", "TX24");
             //AddTicker("99923", "TX26");
-            //AddTicker("87055", "TO23");
+            AddTicker("87055", "TO23");
             AddTicker("102978", "T2X4");
 
             //Letras
@@ -627,7 +628,7 @@ namespace BOTAbritradorPorPlazoIOL
             {
                 string tokenURL = "https://streaming-externo-v2.invertironline.com/api/Account/HubToken";
                 
-                //Esto dejó de funcionar en 2001...
+                //Esto dejó de funcionar en 2001 cuando agregaron el control AntiBOTs...
                 //string sData = ObtenerTokenWS(txtUsuario.Text, txtContraseña.Text);
                 //Así que no me quedó otra que Hardcodear el Token, el cual es siempre el mismo.
                 string sData = "{id: '644657', hashKey: '3iefDRw/0xqD8DnZUR00j+0qCJFAgKD0dpSc/qzZA6Q='}";
@@ -812,10 +813,12 @@ namespace BOTAbritradorPorPlazoIOL
                     simbolo == "AL41" || simbolo == "TO23" || simbolo == "PBA25" || simbolo == "CO26" ||
                     simbolo == "CUAP" || simbolo == "DICP" || simbolo == "GD29" || simbolo == "GD30" ||
                     simbolo == "GD35" || simbolo == "GD38" || simbolo == "GD41" || simbolo == "GD46" ||
-                    simbolo == "PARP" || simbolo == "PR13" || simbolo == "PR15" || simbolo == "TC21" ||
-                    simbolo == "TV22" || simbolo == "TO21" || simbolo == "T2V1" || simbolo == "TX21" ||
+                    simbolo == "PARP" || simbolo == "PR13" || simbolo == "AL30D" || simbolo == "GD30D" ||
+                    simbolo == "T2X4" || simbolo == "TO21" || simbolo == "T2V1" || simbolo == "TX21" ||
                     simbolo == "TX22" || simbolo == "TX23" || simbolo == "TX24" || simbolo == "TX26" ||
                     simbolo == "TX28" )
+                    
+                    //Sí, lo sé. Muchos de estos bonos ya no existen más.
                 {
                     esBono = true;
                 }

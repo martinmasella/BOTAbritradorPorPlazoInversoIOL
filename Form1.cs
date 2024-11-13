@@ -92,9 +92,9 @@ namespace BOTAbritradorPorPlazoIOL
             //AddTicker("99934", "AL29D");
             //AddTicker("99935", "AL29C");
 
-            AddTicker("0", "Bonos");
-            AddTicker("99919", "AL30");
-            AddTicker("99926", "AL30D");
+            //AddTicker("0", "Bonos");
+            //AddTicker("99919", "AL30");
+            //AddTicker("99926", "AL30D");
             //AddTicker("99927", "AL30C");
 
             //AddTicker("99920", "AL35");
@@ -108,15 +108,15 @@ namespace BOTAbritradorPorPlazoIOL
             //AddTicker("99922", "AL41");
             //AddTicker("87456", "CO26");
             //AddTicker("33107", "CUAP");
-            //AddTicker("22585", "DICP");
+            AddTicker("22585", "DICP");
             //AddTicker("22582", "PARP");
 
             //AddTicker("99952", "GD29");
             //AddTicker("99957", "GD29D");
             //AddTicker("99956", "GD29C");
 
-            AddTicker("99943", "GD30");
-            AddTicker("99958", "GD30D");
+            //AddTicker("99943", "GD30");
+            //AddTicker("99958", "GD30D");
             //AddTicker("99963", "GD30C");
             
             //AddTicker("99944", "GD35");
@@ -128,16 +128,17 @@ namespace BOTAbritradorPorPlazoIOL
             //AddTicker("99953", "GD46");
 
             //AddTicker("22582", "PARP");
-            //AddTicker("92379", "PBA25");
+            AddTicker("92379", "PBA25");
             //AddTicker("88518", "PBY22");
             //AddTicker("21957", "PR13");
             //AddTicker("66447", "PR15");
             //AddTicker("100429", "TV22");
             //AddTicker("97866", "TX23");
             //AddTicker("97867", "TX24");
-            //AddTicker("99923", "TX26");
-            AddTicker("87055", "TO23");
-            AddTicker("102978", "T2X4");
+            AddTicker("99923", "TX26");
+            AddTicker("99924", "TX28");
+            //AddTicker("87055", "TO23");
+            //AddTicker("102978", "T2X4");
 
             //Letras
             //AddTicker("101675", "S30N2");
@@ -401,9 +402,9 @@ namespace BOTAbritradorPorPlazoIOL
         private void SuscribirDoble(string papel, int id)
         {
             string t0 = id.ToString();
-            string t2 = (id + 1).ToString();
+            string t1 = (id + 1).ToString();
             websocket.Send("{\"arguments\":[\"" + GetCodigoByTicker(papel) + "-1\"],\"invocationId\":\"" + t0 + "\",\"target\":\"JoinGroup\",\"type\":1}" + recordSeparator);
-            websocket.Send("{\"arguments\":[\"" + GetCodigoByTicker(papel) + "-3\"],\"invocationId\":\"" + t2 + "\",\"target\":\"JoinGroup\",\"type\":1}" + recordSeparator);
+            websocket.Send("{\"arguments\":[\"" + GetCodigoByTicker(papel) + "-2\"],\"invocationId\":\"" + t1 + "\",\"target\":\"JoinGroup\",\"type\":1}" + recordSeparator);
         }
 
         private void btnIngresar_Click(object sender, EventArgs e)
@@ -559,7 +560,7 @@ namespace BOTAbritradorPorPlazoIOL
 
                         if (precio1 > 0)
                         {
-                            response = GetResponseGET(sURL + "/api/v2/{Mercado}/Titulos/{Simbolo}/Cotizacion?mercado=bcba&simbolo=" + simbolo + "&model.simbolo=" + simbolo + "&model.mercado=bCBA&model.plazo=t2", bearer);
+                            response = GetResponseGET(sURL + "/api/v2/{Mercado}/Titulos/{Simbolo}/Cotizacion?mercado=bcba&simbolo=" + simbolo + "&model.simbolo=" + simbolo + "&model.mercado=bCBA&model.plazo=t1", bearer);
                             if (response.Contains("Error"))
                             {
                                 ToLog(" Error:" + response);
@@ -724,7 +725,7 @@ namespace BOTAbritradorPorPlazoIOL
                         string sTicker = GetTickerByCodigo(mensaje.arguments[0].idTitulo.Value);
                         if (sTicker != "Error")
                         {
-                            if (mensaje.arguments[0].plazoOperatoria.Value == 3)
+                            if (mensaje.arguments[0].plazoOperatoria.Value == 2)
                             {
                                 double Q48V = mensaje.arguments[0].ultimasPuntas[0].cantidadVenta.Value;
                                 double P48V = mensaje.arguments[0].ultimasPuntas[0].precioVenta.Value;

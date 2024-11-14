@@ -137,6 +137,7 @@ namespace BOTAbritradorPorPlazoIOL
             //AddTicker("97867", "TX24");
             AddTicker("99923", "TX26");
             AddTicker("99924", "TX28");
+            AddTicker("138462", "TZX27");
             //AddTicker("87055", "TO23");
             //AddTicker("102978", "T2X4");
 
